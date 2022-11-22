@@ -1,32 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   parsing.c                                          :+:      :+:    :+:   */
+/*   parsing_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ebourdit <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: nsar <nsar@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/10/01 10:38:41 by ebourdit          #+#    #+#             */
-/*   Updated: 2020/10/07 18:49:20 by ebourdit         ###   ########.fr       */
+/*   Created: 2020/10/01 10:38:41 by nsar              #+#    #+#             */
+/*   Updated: 2022/11/22 16:28:09 by nsar             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
-int		ft_murs(t_recup *recup)
+int		ft_murs(t_recup *recup)//check que la map soit entouree de murs
 {
 	int i;
 
 	i = 0;
 	while (i < recup->nblines)
 	{
-		if (recup->map[i][0] != '1')
+		if (recup->map[i][0] != '1')//check premiere ligne
 			return (1);
 		i++;
 	}
 	i = 0;
 	while (i < recup->nblines)
 	{
-		if (recup->map[i][recup->sizeline - 1] != '1')
+		if (recup->map[i][recup->sizeline - 1] != '1')//derniere colonne
 			return (1);
 		i++;
 	}

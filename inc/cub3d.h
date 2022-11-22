@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   cub3d.h                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nsar <nsar@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/11/22 16:27:30 by nsar              #+#    #+#             */
+/*   Updated: 2022/11/22 16:27:35 by nsar             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef _CUB3D_H
 # define _CUB3D_H
 
@@ -133,9 +145,9 @@ typedef struct		s_recup
 	char		*WE;
 	char		*EA;
 	char		*S;
-	int			nblines;
+	int			nblines;//nb line dans toutes la map
 	int			sizeline;
-	char		**map;
+	char		**map;//prend map a deux dimensions met dans char ** , allouer dans ft_parsing_map
 	char		depart; //position depart : N S E W
 	int			dx; //x de position depart
 	int			dy; //y position depart
