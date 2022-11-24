@@ -6,7 +6,7 @@
 /*   By: nsar <nsar@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/01 10:38:41 by nsar              #+#    #+#             */
-/*   Updated: 2022/11/22 16:27:57 by nsar             ###   ########.fr       */
+/*   Updated: 2022/11/24 15:48:23 by nsar             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		ft_parsing_map(char *fichier, t_recup *recup)
 	while (ret != 0)
 	{
 		ret = get_next_line(fd, &str);
-		if (ft_is_map(str) == 1)
+		if (ft_is_map(str, recup) == 1)
 			ft_copy_map(str, recup);
 		free(str);
 	}
@@ -45,7 +45,11 @@ void	ft_parsing(char *fichier, t_recup *recup)
 	ret = 1;
 	str = NULL;
 	ft_initialisation(recup);
-	fd = open(fichier, O_RDONLY);
+	if ((fd = open(fichier, O_DIRECTORY)) != -1)
+		ft_error(recup, "Invalide : is a directory\n");
+	if ((fd = open(fichier, O_RDONLY)) == -1)
+		ft_error(recup, "Fichier .cub invalide\n");
+	//fd = open(fichier, O_RDONLY);
 	while (ret != 0)
 	{
 		ret = get_next_line(fd, &str);
@@ -79,7 +83,10 @@ int		ft_cub(char *str, t_recup *recup)
 	if (str[i + 1] == 'c' && str[i + 2] == 'u' && str[i + 3] == 'b')
 		ft_parsing(str, recup);
 	else
-		ft_error(recup, "Nom de la map invalide\n");
+		{
+			recup->erreur = 1;
+			ft_error(recup, "Nom de la map invalide\n");
+		}
 	return (0);
 }
 

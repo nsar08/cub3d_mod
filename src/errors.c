@@ -6,7 +6,7 @@
 /*   By: nsar <nsar@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/01 10:38:41 by nsar              #+#    #+#             */
-/*   Updated: 2022/11/22 16:48:34 by nsar             ###   ########.fr       */
+/*   Updated: 2022/11/24 15:13:44 by nsar             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,11 @@ void	ft_error(t_recup *recup, char *str)
 	int i;
 
 	i = -1;
+	
 	write(1, "Error\n", 6);
 	write(1, str, ft_strlen(str));
-
+	if (recup->erreur == 1)
+		exit(1);
 /////////////////free textures
 	if (recup->NO)
 		free(recup->NO);

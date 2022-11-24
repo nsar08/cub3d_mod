@@ -6,7 +6,7 @@
 /*   By: nsar <nsar@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/01 10:38:41 by nsar              #+#    #+#             */
-/*   Updated: 2022/11/22 16:51:00 by nsar             ###   ########.fr       */
+/*   Updated: 2022/11/24 15:29:41 by nsar             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,11 @@ int		ft_atoi3(const char *str, t_recup *recup)
 			sum = (sum * 10) + (str[recup->i] - 48);
 			recup->i++;
 		}
-		if (verify > 255)
+		if (verify > 255 || verify > 2147483646 || verify < -2147483647)
+		{
+			recup->erreur = 1;
 			ft_error(recup, "Chiffre superieur a 255 dans F ou C\n");
+		}
 	}
 	return (sum);
 }

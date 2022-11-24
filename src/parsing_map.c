@@ -6,7 +6,7 @@
 /*   By: nsar <nsar@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/01 10:38:41 by nsar              #+#    #+#             */
-/*   Updated: 2022/11/24 14:55:03 by nsar             ###   ########.fr       */
+/*   Updated: 2022/11/24 15:48:10 by nsar             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int		ft_copy_map(char *str, t_recup *recup)
 	return (0);
 }
 
-int		ft_is_map(char *str)
+int		ft_is_map(char *str, t_recup *recup)
 {
 	int i;
 
@@ -82,6 +82,11 @@ int		ft_is_map(char *str)
 					&& str[i] != 'E' && str[i] != 'W' && str[i] != '\n'
 					&& str[i] != '\t')
 				return (0);
+			else
+				{
+					recup->erreur = 1;
+					ft_error(recup, "Nom de la map invalide\n");
+				}
 			i++;
 		}
 		return (1);
@@ -96,7 +101,7 @@ void	ft_map(char *str, t_recup *recup)
 	static int	ssizeline = 0;
 
 	i = 0;
-	if (ft_is_map(str) == 1)
+	if (ft_is_map(str, recup) == 1)
 	{
 		if ((i = ft_strlen(str)) > ssizeline)
 			ssizeline = i;
