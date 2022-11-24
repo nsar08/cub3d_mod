@@ -6,7 +6,7 @@
 /*   By: nsar <nsar@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/01 10:38:41 by nsar              #+#    #+#             */
-/*   Updated: 2022/11/22 16:28:09 by nsar             ###   ########.fr       */
+/*   Updated: 2022/11/24 14:55:03 by nsar             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int		ft_murs(t_recup *recup)//check que la map soit entouree de murs
 	i = 0;
 	while (i < recup->nblines)
 	{
-		if (recup->map[i][0] != '1')//check premiere ligne
+		if (recup->map[i][0] != '1')//check premiere colonne
 			return (1);
 		i++;
 	}
@@ -30,9 +30,9 @@ int		ft_murs(t_recup *recup)//check que la map soit entouree de murs
 			return (1);
 		i++;
 	}
-	if (ft_murs_util(recup->map[0]) == 1)
+	if (ft_murs_util(recup->map[0]) == 1)//premiere ligne
 		return (1);
-	if (ft_murs_util(recup->map[recup->nblines - 1]) == 1)
+	if (ft_murs_util(recup->map[recup->nblines - 1]) == 1)//derniere ligne
 		return (1);
 	return (0);
 }
