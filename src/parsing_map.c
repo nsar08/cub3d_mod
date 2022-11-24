@@ -6,7 +6,7 @@
 /*   By: nsar <nsar@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/01 10:38:41 by nsar              #+#    #+#             */
-/*   Updated: 2022/11/24 15:48:10 by nsar             ###   ########.fr       */
+/*   Updated: 2022/11/24 16:17:11 by nsar             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,7 @@ int		ft_is_map(char *str, t_recup *recup)
 					&& str[i] != '2' && str[i] != 'N' && str[i] != 'S' \
 					&& str[i] != 'E' && str[i] != 'W' && str[i] != '\n'
 					&& str[i] != '\t')
-				return (0);
-			else
-				{
-					recup->erreur = 1;
-					ft_error(recup, "Nom de la map invalide\n");
-				}
+				return(0);
 			i++;
 		}
 		return (1);
