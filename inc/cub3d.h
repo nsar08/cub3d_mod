@@ -6,7 +6,7 @@
 /*   By: nsar <nsar@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 16:27:30 by nsar              #+#    #+#             */
-/*   Updated: 2022/11/24 16:12:43 by nsar             ###   ########.fr       */
+/*   Updated: 2022/11/24 16:20:20 by nsar             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -183,7 +183,7 @@ int			ft_path_texture(char *str, char **texture, t_recup *recup, int j);
 //parsing_map.c
 void		ft_initialisation(t_recup *recup);
 int			ft_murs(t_recup *recup);
-int			ft_is_map(char *str, t_recup *recup);
+int			ft_is_map(char *str);
 void		ft_map(char *str, t_recup *recup);
 int			ft_copy_map(char *str, t_recup *recup);
 void		ft_init_sprite(t_recup *recup);

@@ -6,7 +6,7 @@
 /*   By: nsar <nsar@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/01 10:38:41 by nsar              #+#    #+#             */
-/*   Updated: 2022/11/24 16:13:01 by nsar             ###   ########.fr       */
+/*   Updated: 2022/11/24 16:20:44 by nsar             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int		ft_parsing_map(char *fichier, t_recup *recup)
 	while (ret != 0)
 	{
 		ret = get_next_line(fd, &str);
-		if (ft_is_map(str, recup) == 1)
+		if (ft_is_map(str) == 1)
 			ft_copy_map(str, recup);
 		free(str);
 	}
