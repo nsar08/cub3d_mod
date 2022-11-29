@@ -6,7 +6,7 @@
 /*   By: nsar <nsar@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 16:49:58 by nsar              #+#    #+#             */
-/*   Updated: 2022/11/22 16:51:00 by nsar             ###   ########.fr       */
+/*   Updated: 2022/11/29 12:01:16 by nsar             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,47 +89,3 @@ void	ft_init_texture(t_recup *recup)
 	recup->t.wallX -= floor((recup->t.wallX)); // wallX = 15.3 devient wallX = 0.3
 }
 
-//initialise recup->sxy[].x, recup->sxy[].y pour chaque sprite + nbspr + mallocs
-void	ft_init_sprite(t_recup *recup)
-{
-	int i;
-	int j;
-
-	i = -1;
-	recup->s.nbspr = 0;
-	ft_verify_errors(recup);
-	while (++i < recup->nblines)
-	{
-		j = -1;
-		while (++j < recup->sizeline)
-		{
-			if (recup->map[i][j] == '2')
-				recup->s.nbspr += 1;
-		}
-	}
-	if (!(recup->sxy = (t_sprxy *)malloc(sizeof(t_sprxy) * recup->s.nbspr)))
-		ft_error(recup, "Malloc sxy*");
-	if (!(recup->s.order = (int *)malloc(sizeof(int) * recup->s.nbspr)))
-		ft_error(recup, "Malloc s.order*");
-	if (!(recup->s.dist = (double *)malloc(sizeof(double) * recup->s.nbspr)))
-		ft_error(recup, "Malloc s.dist*");
-	ft_init_sprite2(recup, 0, 0, 0);
-}
-
-void	ft_init_sprite2(t_recup *recup, int i, int j, int v)
-{
-	i = i - 1;
-	while (++i < recup->nblines)
-	{
-		j = -1;
-		while (++j < recup->sizeline)
-		{
-			if (recup->map[i][j] == '2')
-			{
-				recup->sxy[v].x = (double)i + 0.5;
-				recup->sxy[v].y = (double)j + 0.5;
-				v++;
-			}
-		}
-	}
-}

@@ -6,7 +6,7 @@
 /*   By: nsar <nsar@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/01 10:38:41 by nsar              #+#    #+#             */
-/*   Updated: 2022/11/24 15:13:44 by nsar             ###   ########.fr       */
+/*   Updated: 2022/11/29 11:16:13 by nsar             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,26 +120,8 @@ void			ft_header(t_recup *recup, int fd)
 	write(fd, &tmp, 4);
 }
 
-void	ft_save(t_recup *recup)
+int ft_close(t_recup *recup)
 {
-	int fd;
-	int	x;
-	int	y;
-
-	y = recup->Ry;
-	if ((fd = open("./image.bmp", O_CREAT | O_RDWR)) == -1)
-		ft_error(recup, "Impossible de creer .bmp\n");
-	ft_header(recup, fd);
-	while (y >= 0)
-	{
-		x = 0;
-		while (x < recup->Rx)
-		{
-			write(fd, &recup->data.addr[y * recup->data.line_length / 4 + x], 4);
-			x++;
-		}
-		y--;
-	}
-	system("chmod 777 image.bmp"); //pour pouvoir voir limage dans le finder
-	exit (0);
+	(void)recup;
+	exit(0);
 }

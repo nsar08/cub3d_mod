@@ -1,5 +1,4 @@
-SRC =	minimap.c \
-		parsing.c \
+SRC =	parsing.c \
 		parsing_color_resolution_texture.c \
 		parsing_map.c \
 		parsing_utils.c \
@@ -8,7 +7,6 @@ SRC =	minimap.c \
 		raycasting_utils.c \
 		raycasting_move.c \
 		raycasting.c \
-		sprites.c \
 		errors.c \
 		get_next_line.c \
 		get_next_line_utils.c
@@ -17,7 +15,7 @@ NAME = Cub3D
 
 MLX_DIR = mlx
 MLX = libmlx.a
-CC = clang
+CC = gcc
 
 # diff entre .a et .dylib
 # .a = lib static, les fonctions utilisees sont directement ecrite dans le binaire
@@ -30,7 +28,7 @@ SRC_DIR = src
 INC_DIR = inc
 
 OBJ = $(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
-DPD = $(addprefix $(OBJ_DIR)/,$(SRC:.c=.d))
+#DPD = $(addprefix $(OBJ_DIR)/,$(SRC:.c=.d))
 
 .c.o:
 	${CC} ${CFLAGS} -c$< -o ${<:.c=.o}
@@ -58,7 +56,6 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c $(MLX_DIR)/$(MLX) | .gitignore
 		@echo $(NAME) > .gitignore
 
 clean:
-	@$(MAKE) clean -C $(MLX_DIR)
 	@rm -rf $(OBJ_DIR)
 	@echo "obj deleted"
 
@@ -71,4 +68,4 @@ re: fclean all
 .PHONY: all, clean, fclean, re
 
 # Utilise les .d (et ignore s'ils n'existe pas)
--include $(DPD)
+#-include $(DPD)

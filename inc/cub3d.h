@@ -6,7 +6,7 @@
 /*   By: nsar <nsar@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 16:27:30 by nsar              #+#    #+#             */
-/*   Updated: 2022/11/24 16:20:20 by nsar             ###   ########.fr       */
+/*   Updated: 2022/11/29 12:07:42 by nsar             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@
 # define BACK_S_S			1
 # define RIGHT_D_D			2
 # define LEFT_A_Q			0
+# define KEY_EXIT			17
 
 # ifdef Darwin
 #  define SYS 	1
@@ -50,21 +51,8 @@ typedef struct	s_sprxy
 
 typedef struct	s_sprite
 {
-	int			nbspr; //nombre de sprites
 	int			*order;
 	double		*dist;
-	double 		spriteX;
-    double 		spriteY;
-	double 		invDet;
-	double 		transformX;
-    double 		transformY;
-	int 		spriteScreenX;
-	int 		spriteHeight;
-	int			drawStartX;
-	int 		drawStartY;
-	int 		drawEndY;
-	int 		drawEndX;
-	int 		spriteWidth;
 	double		*ZBuffer;
 }					t_sprite;
 
@@ -153,7 +141,6 @@ typedef struct		s_recup
 	int			dy; //y position depart
 	int			indicateur;
 	int			indicateur2;
-	int			save;
 	int			erreur;
 	t_data		texture[5];
 	t_data		data;
@@ -186,7 +173,6 @@ int			ft_murs(t_recup *recup);
 int			ft_is_map(char *str);
 void		ft_map(char *str, t_recup *recup);
 int			ft_copy_map(char *str, t_recup *recup);
-void		ft_init_sprite(t_recup *recup);
 
 //--------------RAYCASTING----------------//
 //raycasting.c
@@ -201,7 +187,6 @@ void		ft_draw_texture(t_recup *recup, int x, int y);
 void		ft_initialisation2(t_recup *recup);
 void		ft_initialisation3(t_recup *recup);
 void		ft_init_texture(t_recup *recup);
-void		ft_init_sprite2(t_recup *recup, int i, int j, int v);
 //raycasting_utils.c
 void		ft_stepsideDist(t_recup *recup);
 void		ft_incrementray(t_recup *recup);
@@ -216,16 +201,9 @@ void		ft_error(t_recup *recup, char *str);
 int			ft_exit(t_recup *recup);
 void		ft_verify_errors(t_recup *recup);
 void		ft_header(t_recup *recup, int fd);
-void		ft_save(t_recup *recup);
-//--------------SPRITES----------------//
-//sprites.c
-void		ft_sprite(t_recup *recup);
+int ft_close(t_recup *recup);
 
 //--------------BONUS----------------//
-//minimap.c
-int			ft_minimap(t_recup *recup);
-void		my_color_cube(t_data *data, int x, int y, int color);
-void		my_color_perso(t_data *data, int x, int y, int color);
 //hitpoints.c
 void		ft_hitpoints(t_recup *recup);
 

@@ -6,7 +6,7 @@
 /*   By: nsar <nsar@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/01 10:38:41 by nsar              #+#    #+#             */
-/*   Updated: 2022/11/24 16:20:44 by nsar             ###   ########.fr       */
+/*   Updated: 2022/11/29 12:01:25 by nsar             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ int		ft_parsing_map(char *fichier, t_recup *recup)
 		free(str);
 	}
 	close(fd);
-	ft_init_sprite(recup);
 	ft_mlx(recup);
 	return (0);
 }
@@ -49,7 +48,6 @@ void	ft_parsing(char *fichier, t_recup *recup)
 		ft_error(recup, "Invalide : is a directory\n");
 	if ((fd = open(fichier, O_RDONLY)) == -1)
 		ft_error(recup, "Fichier .cub invalide\n");
-	//fd = open(fichier, O_RDONLY);
 	while (ret != 0)
 	{
 		ret = get_next_line(fd, &str);
@@ -93,12 +91,9 @@ int		ft_cub(char *str, t_recup *recup)
 int		main(int argc, char **argv)
 {
 	t_recup recup;
-	recup.save = 0;
 
-	if (argc == 2 || argc == 3)
+	if (argc == 2)
 	{
-		if (argc == 3)
-			recup.save = 1;
 		ft_cub(argv[1], &recup);
 	}
 	else
