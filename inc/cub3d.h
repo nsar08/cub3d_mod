@@ -6,7 +6,7 @@
 /*   By: nsar <nsar@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 16:27:30 by nsar              #+#    #+#             */
-/*   Updated: 2022/11/29 12:07:42 by nsar             ###   ########.fr       */
+/*   Updated: 2022/11/29 13:25:28 by nsar             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -200,8 +200,7 @@ void		ft_rotate_right_left(t_recup *recup);
 void		ft_error(t_recup *recup, char *str);
 int			ft_exit(t_recup *recup);
 void		ft_verify_errors(t_recup *recup);
-void		ft_header(t_recup *recup, int fd);
-int ft_close(t_recup *recup);
+int			ft_close(t_recup *recup);
 
 //--------------BONUS----------------//
 //hitpoints.c

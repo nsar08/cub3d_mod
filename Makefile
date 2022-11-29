@@ -37,7 +37,6 @@ OBJ = $(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
 # -j multisreder / ameliore la vitesse de compliation
 # Pas de regle opti car makefile mlx pas compatible
 all:
-	@$(MAKE) -C $(MLX_DIR)
 	@$(MAKE) -j $(NAME)
 
 # permet de pouvoir comparer la derniere modification de la dep par rapport a la regle

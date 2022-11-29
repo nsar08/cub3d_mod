@@ -6,7 +6,7 @@
 /*   By: nsar <nsar@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/10/01 10:38:41 by nsar              #+#    #+#             */
-/*   Updated: 2022/11/29 11:16:13 by nsar             ###   ########.fr       */
+/*   Updated: 2022/11/29 13:27:27 by nsar             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,12 @@ void	ft_error(t_recup *recup, char *str)
 		free(recup->s.order);
 	if (recup->s.dist)
 		free(recup->s.dist);
-//	if (recup->sxy)
-//		free(recup->sxy);
+	if (recup->sxy)//etait en comm je sais pas pourquoi
+		free(recup->sxy);//etait en comm je sais pas pourquoi
 
 //////////////////free zbuffer
-//	if (recup->s.Zbuffer)
-//		free(recup->s.Zbuffer);
+	if (recup->s.ZBuffer)//etait en comm je sais pas pourquoi
+		free(recup->s.ZBuffer);//etait en comm je sais pas pourquoi
 
 
 /*	while (i != 0)
@@ -90,34 +90,6 @@ int		ft_exit(t_recup *recup)
 	if (recup->data.mlx_win)
 		mlx_destroy_window(recup->data.mlx_ptr, recup->data.mlx_win);
 	exit(0);
-}
-
-void			ft_header(t_recup *recup, int fd)
-{
-	int tmp;
-
-	write(fd, "BM", 2); //BM indique qu'il s'agit d'un Bitmap.
-	tmp = 14 + 40 + 4 * recup->Rx * recup->Ry; //taille totale du fichier
-	write(fd, &tmp, 4);
-	tmp = 0;
-	write(fd, &tmp, 2); //champ réservé
-	write(fd, &tmp, 2);
-	tmp = 54; //offset de l'image
-	write(fd, &tmp, 4);
-	tmp = 40; //taille image en octets
-	write(fd, &tmp, 4);
-	write(fd, &recup->Rx, 4); //taille image horizontalement
-	write(fd, &recup->Ry, 4); //taille image verticalement
-	tmp = 1; //nombre de plans (toujours 1)
-	write(fd, &tmp, 2);
-	write(fd, &recup->data.bits_per_pixel, 2); //nombre de bits utilisés pour coder la couleur
-	tmp = 0; //methode de compression 0 si image non compressee
-	write(fd, &tmp, 4);
-	write(fd, &tmp, 4);
-	write(fd, &tmp, 4);
-	write(fd, &tmp, 4);
-	write(fd, &tmp, 4);
-	write(fd, &tmp, 4);
 }
 
 int ft_close(t_recup *recup)
