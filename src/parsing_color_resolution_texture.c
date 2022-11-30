@@ -6,7 +6,7 @@
 /*   By: nsar <nsar@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 10:38:41 by nsar              #+#    #+#             */
-/*   Updated: 2022/11/29 14:13:43 by nsar             ###   ########.fr       */
+/*   Updated: 2022/11/30 15:07:33 by nsar             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,7 @@ void	ft_texture(char *str, t_recup *recup)
 	else if (str[i] == 'S' && str[i + 1] != 'O')
 		ft_path_texture(str, &recup->S, recup, 1);
 	else if (str[0] != 'N' && str[0] != 'S' && str[0] != 'W' && str[0] != 'E'
-			&& str[0] != 'R' && str[0] != 'F' && str[0] != 'C'
+			&& str[0] != 'F' && str[0] != 'C'
 			&& str[0] > 65 && str[0] < 122)
 		ft_error(recup \
 				, "Premier caractere d'un element n'est pas un identifiant\n");
@@ -127,15 +127,6 @@ void	ft_color_resolution(char **str, t_recup *recup)
 	{
 		free(*str);
 		ft_error(recup, "Map avant elements ou elements manquants\n");
-	}
-	if (*str[i] == 'R')
-	{
-		recup->Rx = ft_atoi2(*str, recup);
-		recup->Ry = ft_atoi2(*str, recup);
-		if (ft_atoi2(*str, recup) > 0 || recup->Rx == 0 || recup->Ry == 0)
-		{
-			ft_error(recup, "Mauvais nombre de chiffres dans R\n");
-		}
 	}
 	else if (*str[i] == 'F')
 		recup->F = ft_atoi3(*str, recup);

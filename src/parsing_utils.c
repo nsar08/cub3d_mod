@@ -6,7 +6,7 @@
 /*   By: nsar <nsar@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 18:19:22 by nsar              #+#    #+#             */
-/*   Updated: 2022/11/29 14:14:02 by nsar             ###   ########.fr       */
+/*   Updated: 2022/11/30 15:05:53 by nsar             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,8 @@ void	ft_initialisation(t_recup *recup)
 	recup->S = NULL;
 	recup->F = 0;
 	recup->C = 0;
-	recup->Rx = 0;
-	recup->Ry = 0;
+	recup->Rx = 1000;
+	recup->Ry = 1000;
 	recup->nblines = 0;
 	recup->sizeline = 0;
 	recup->map = NULL;
