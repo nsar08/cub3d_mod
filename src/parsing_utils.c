@@ -6,7 +6,7 @@
 /*   By: nsar <nsar@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 18:19:22 by nsar              #+#    #+#             */
-/*   Updated: 2022/12/05 11:14:45 by nsar             ###   ########.fr       */
+/*   Updated: 2022/12/05 15:35:38 by nsar             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,10 @@ int		ft_depart(char c, t_recup *recup, int i, int j)
 	if (c == 'N' || c == 'S' || c == 'E' || c == 'W')
 	{
 		if (recup->depart != 'x')
+		{
+			recup->erreur = 1;
 			ft_error(recup, "Plus d'un joueur dans la map");
+		}
 		recup->depart = c;
 		recup->dx = i;
 		recup->dy = j;

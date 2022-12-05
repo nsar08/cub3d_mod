@@ -6,7 +6,7 @@
 /*   By: nsar <nsar@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 16:27:30 by nsar              #+#    #+#             */
-/*   Updated: 2022/12/05 13:16:42 by nsar             ###   ########.fr       */
+/*   Updated: 2022/12/05 15:26:37 by nsar             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -173,6 +173,8 @@ int			ft_murs(t_recup *recup);
 int			ft_is_map(char *str);
 void		ft_map(char *str, t_recup *recup);
 int			ft_copy_map(char *str, t_recup *recup);
+int 		check_map(t_recup *recup);
+
 
 //--------------RAYCASTING----------------//
 //raycasting.c
