@@ -6,7 +6,7 @@
 /*   By: nsar <nsar@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 10:38:41 by nsar              #+#    #+#             */
-/*   Updated: 2022/11/30 15:07:33 by nsar             ###   ########.fr       */
+/*   Updated: 2022/12/05 11:17:59 by nsar             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int		ft_atoi2(const char *str, t_recup *recup)
 	return (sum);
 }
 
-int		ft_atoi3(const char *str, t_recup *recup)
+int		ft_atoi3(const char *str, t_recup *recup)//plus de 25 lignes
 {
 	int		sum;
 	int		verify;

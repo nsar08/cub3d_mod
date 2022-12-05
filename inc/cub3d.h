@@ -6,7 +6,7 @@
 /*   By: nsar <nsar@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 16:27:30 by nsar              #+#    #+#             */
-/*   Updated: 2022/11/29 13:25:28 by nsar             ###   ########.fr       */
+/*   Updated: 2022/12/05 13:16:42 by nsar             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -196,20 +196,29 @@ void		ft_swap(t_recup *recup);
 void		ft_forward_back(t_recup *recup);
 void		ft_left_right(t_recup *recup);
 void		ft_rotate_right_left(t_recup *recup);
+void		ft_rotate_left(t_recup *recup, double oldDirX);
+
 //errors.c
 void		ft_error(t_recup *recup, char *str);
 int			ft_exit(t_recup *recup);
 void		ft_verify_errors(t_recup *recup);
 int			ft_close(t_recup *recup);
+//init.c
+void ft_init_2(t_recup *recup);
+void ft_init_dir(t_recup *recup);
+void ft_init_more3(t_recup *recup);
+
 
 //--------------BONUS----------------//
 //hitpoints.c
 void		ft_hitpoints(t_recup *recup);
 
 int			get_next_line(int fd, char **line);
-int			ft_strlen(char *str);
+char		*ft_subbuff(char *buff, int start, int len);
 char		*ft_strjoin(char *s1, char *s2);
 char		*ft_substr(char const *s, unsigned int start, size_t len);
-char		*ft_subbuff(char *buff, int start, int len);
+int			ft_strlen(char *str);
+
+
 
 #endif

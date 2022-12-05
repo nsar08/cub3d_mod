@@ -6,7 +6,7 @@
 /*   By: nsar <nsar@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 16:49:58 by nsar              #+#    #+#             */
-/*   Updated: 2022/11/29 12:01:16 by nsar             ###   ########.fr       */
+/*   Updated: 2022/12/05 13:14:58 by nsar             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 
 void	ft_initialisation2(t_recup *recup)
 {
-	if (!(recup->s.ZBuffer = (double *)malloc(sizeof(double) * recup->Rx)))
+	recup->s.ZBuffer = (double *)malloc(sizeof(double) * recup->Rx);
+	if (!(recup->s.ZBuffer))
 		exit(0);
 	recup->data.forward = 0;
 	recup->data.back = 0;
@@ -30,22 +31,7 @@ void	ft_initialisation2(t_recup *recup)
 	recup->ray.dirY = 0;
 	recup->ray.planX = 0;
 	recup->ray.planY = 0;
-	if (recup->depart == 'N')
-		recup->ray.dirX = -1;
-	if (recup->depart == 'S')
-		recup->ray.dirX = 1;
-	if (recup->depart == 'E')
-		recup->ray.dirY = 1;
-	if (recup->depart == 'W')
-		recup->ray.dirY = -1;
-	if (recup->depart == 'N')
-		recup->ray.planY = 0.66;
-	if (recup->depart == 'S')
-		recup->ray.planY = -0.66;
-	if (recup->depart == 'E')
-		recup->ray.planX = 0.66;
-	if (recup->depart == 'W')
-		recup->ray.planX = -0.66;
+	ft_init_dir(recup);
 }
 
 void	ft_initialisation3(t_recup *recup)
@@ -62,12 +48,7 @@ void	ft_initialisation3(t_recup *recup)
 	recup->ray.mapY = (int)recup->ray.posY;
 	recup->ray.movespeed = 0.1;
 	recup->ray.rotspeed = 0.033 * 1.8;
-	recup->ray.deltaDistX = (recup->ray.rayDirY == 0) ? 0 : \
-			((recup->ray.rayDirX == 0) ? 1 : sqrt(1 + (recup->ray.rayDirY * \
-			recup->ray.rayDirY) / (recup->ray.rayDirX * recup->ray.rayDirX)));
-	recup->ray.deltaDistY = (recup->ray.rayDirX == 0) ? 0 : \
-			((recup->ray.rayDirY == 0) ? 1 : sqrt(1 + (recup->ray.rayDirX * \
-			recup->ray.rayDirX) / (recup->ray.rayDirY * recup->ray.rayDirY)));
+	ft_init_more3(recup);
 }
 
 void	ft_init_texture(t_recup *recup)

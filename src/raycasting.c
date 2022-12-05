@@ -6,7 +6,7 @@
 /*   By: nsar <nsar@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 10:38:41 by nsar              #+#    #+#             */
-/*   Updated: 2022/11/29 14:12:31 by nsar             ###   ########.fr       */
+/*   Updated: 2022/12/05 12:25:45 by nsar             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,27 +33,32 @@ void	ft_get_texture_adress(t_recup *recup)
 
 void	ft_get_texture(t_recup *recup)
 {
-	if (!(recup->texture[0].img = mlx_xpm_file_to_image(recup->data.mlx_ptr,
-					recup->NO, &(recup->texture[0].width),
-					&(recup->texture[0].height))))
+	if (!(recup->texture[0].img))
 		ft_error(recup, "Texture NO\n");
-	if (!(recup->texture[1].img = mlx_xpm_file_to_image(recup->data.mlx_ptr,
-					recup->SO, &(recup->texture[1].width),
-					&(recup->texture[1].height))))
+	if (!(recup->texture[1].img))
 		ft_error(recup, "Texture SO\n");
-	if (!(recup->texture[2].img = mlx_xpm_file_to_image(recup->data.mlx_ptr,
-					recup->WE, &(recup->texture[2].width),
-					&(recup->texture[2].height))))
+	if (!(recup->texture[2].img))
 		ft_error(recup, "Texture WE\n");
-	if (!(recup->texture[3].img = mlx_xpm_file_to_image(recup->data.mlx_ptr,
-					recup->EA, &(recup->texture[3].width),
-					&(recup->texture[3].height))))
+	if (!(recup->texture[3].img))
 		ft_error(recup, "Texture EA\n");
-	if (!(recup->texture[4].img = mlx_xpm_file_to_image(recup->data.mlx_ptr,
-					recup->S, &(recup->texture[4].width),
-					&(recup->texture[4].height))))
+	if (!(recup->texture[4].img))
 		ft_error(recup, "Texture S\n");
 	ft_get_texture_adress(recup);
+}
+
+void ft_get_texture_1(t_recup *recup)
+{
+	recup->texture[0].img = mlx_xpm_file_to_image(recup->data.mlx_ptr, recup->NO, &(recup->texture[0].width),
+					&(recup->texture[0].height));
+	recup->texture[1].img = mlx_xpm_file_to_image(recup->data.mlx_ptr, recup->SO, &(recup->texture[1].width),
+					&(recup->texture[1].height));
+	recup->texture[2].img = mlx_xpm_file_to_image(recup->data.mlx_ptr, recup->WE, &(recup->texture[2].width),
+					&(recup->texture[2].height));
+	recup->texture[3].img = mlx_xpm_file_to_image(recup->data.mlx_ptr, recup->EA, &(recup->texture[3].width),
+					&(recup->texture[3].height));
+	recup->texture[4].img = mlx_xpm_file_to_image(recup->data.mlx_ptr, recup->S, &(recup->texture[4].width),
+					&(recup->texture[4].height));
+	ft_get_texture(recup);
 }
 
 int		ft_raycasting(t_recup *recup)
@@ -80,15 +85,15 @@ int		ft_mlx(t_recup *recup)
 {
 	ft_initialisation2(recup);
 	recup->data.mlx_ptr = mlx_init();
-	ft_get_texture(recup);
+	ft_get_texture_1(recup);
 	recup->data.img = mlx_new_image(recup->data.mlx_ptr, recup->Rx, recup->Ry);
-	recup->data.addr = (int *)mlx_get_data_addr(recup->data.img, &recup->data.
-			bits_per_pixel, &recup->data.line_length, &recup->data.endian);
+	recup->data.addr = (int *)mlx_get_data_addr(recup->data.img, \
+			&recup->data.bits_per_pixel, &recup->data.line_length, &recup->data.endian);
 	recup->data.mlx_win = mlx_new_window(recup->data.mlx_ptr, recup->Rx,
 			recup->Ry, "Hello world!");
 	recup->data.img2 = mlx_new_image(recup->data.mlx_ptr, recup->Rx, recup->Ry);
-	recup->data.addr2 = (int *)mlx_get_data_addr(recup->data.img2, &recup->
-			data.bits_per_pixel, &recup->data.line_length, &recup->data.endian);
+	recup->data.addr2 = (int *)mlx_get_data_addr(recup->data.img2, \
+			&recup->data.bits_per_pixel, &recup->data.line_length, &recup->data.endian);
 	//mlx_hook(recup->data.mlx_win, 33, 1L<<17, ft_test, recup);
 	mlx_hook(recup->data.mlx_win, KEY_EXIT, 0, &ft_close, recup);
 	mlx_hook(recup->data.mlx_win, 2, 1L << 0, ft_key_press, recup);

@@ -8,6 +8,7 @@ SRC =	parsing.c \
 		raycasting_move.c \
 		raycasting.c \
 		errors.c \
+		init.c \
 		get_next_line.c \
 		get_next_line_utils.c
 

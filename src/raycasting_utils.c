@@ -6,7 +6,7 @@
 /*   By: nsar <nsar@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 16:50:35 by nsar              #+#    #+#             */
-/*   Updated: 2022/11/22 16:51:00 by nsar             ###   ########.fr       */
+/*   Updated: 2022/12/05 12:31:42 by nsar             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,12 @@ void	ft_drawStartEnd(t_recup *recup)
 	//Calculate distance projected on camera direction (Euclidean distance will give fisheye effect!)
 		if (recup->ray.side == 0)
 			recup->ray.perpWallDist = ((double)recup->ray.mapX - \
-					recup->ray.posX + (1 - (double)recup->ray.stepX) / 2) / recup->ray.rayDirX;
+					recup->ray.posX + (1 - (double)recup->ray.stepX) \
+					/ 2) / recup->ray.rayDirX;
 		else
 			recup->ray.perpWallDist = ((double)recup->ray.mapY - \
-					recup->ray.posY + (1 - (double)recup->ray.stepY) / 2) / recup->ray.rayDirY;
+					recup->ray.posY + (1 - (double)recup->ray.stepY) \
+					/ 2) / recup->ray.rayDirY;
 		// calcul de la hauteur de la ligne a dessiner	
 		recup->ray.lineHeight = (int)(recup->Ry / recup->ray.perpWallDist);
 		recup->ray.drawStart = - recup->ray.lineHeight / 2 + recup->Ry / 2;

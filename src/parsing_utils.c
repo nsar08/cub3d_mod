@@ -6,7 +6,7 @@
 /*   By: nsar <nsar@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 18:19:22 by nsar              #+#    #+#             */
-/*   Updated: 2022/11/30 15:05:53 by nsar             ###   ########.fr       */
+/*   Updated: 2022/12/05 11:14:45 by nsar             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,16 +89,5 @@ void	ft_initialisation(t_recup *recup)
 	recup->map = NULL;
 	recup->dx = 0;
 	recup->dy = 0;
-	recup->depart = 'x';
-	recup->indicateur2 = 0;
-	recup->data.img = NULL;
-	recup->texture[0].img = NULL;
-	recup->texture[1].img = NULL;
-	recup->texture[2].img = NULL;
-	recup->texture[3].img = NULL;
-	recup->texture[4].img = NULL;
-	recup->data.mlx_win = NULL;
-	recup->map = NULL;
-	recup->s.order = NULL;
-	recup->s.dist = NULL;
+	ft_init_2(recup);
 }
