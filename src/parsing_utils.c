@@ -6,7 +6,7 @@
 /*   By: nsar <nsar@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/19 18:19:22 by nsar              #+#    #+#             */
-/*   Updated: 2022/12/05 15:35:38 by nsar             ###   ########.fr       */
+/*   Updated: 2022/12/13 16:10:31 by nsar             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,15 +78,15 @@ int		ft_murs_util(char *str)
 
 void	ft_initialisation(t_recup *recup)
 {
-	recup->NO = NULL;
-	recup->SO = NULL;
-	recup->WE = NULL;
-	recup->EA = NULL;
-	recup->S = NULL;
-	recup->F = 0;
-	recup->C = 0;
-	recup->Rx = 1000;
-	recup->Ry = 1000;
+	recup->no = NULL;
+	recup->so = NULL;
+	recup->we = NULL;
+	recup->ea = NULL;
+	recup->sp = NULL;
+	recup->f = 0;
+	recup->c = 0;
+	recup->rx = 1000;
+	recup->ry = 1000;
 	recup->nblines = 0;
 	recup->sizeline = 0;
 	recup->map = NULL;

@@ -6,7 +6,7 @@
 /*   By: nsar <nsar@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 16:27:30 by nsar              #+#    #+#             */
-/*   Updated: 2022/12/05 15:26:37 by nsar             ###   ########.fr       */
+/*   Updated: 2022/12/13 16:20:54 by nsar             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,44 +53,44 @@ typedef struct	s_sprite
 {
 	int			*order;
 	double		*dist;
-	double		*ZBuffer;
+	double		*zbuffer;
 }					t_sprite;
 
 typedef struct  s_texture
 {
 	int			texdir; //direction NO, S, EA, WE de la texture
-	double		wallX; // valeur où le mur a été touché : coordonnée y si side == 0, coordonnée x si side == 1
-	int			texX; // coordonnée x de la texture
-	int			texY; // coordonée y de la texture
+	double		wallx; // valeur où le mur a été touché : coordonnée y si side == 0, coordonnée x si side == 1
+	int			texx; // coordonnée x de la texture
+	int			texy; // coordonée y de la texture
 	double		step; // indique de combien augmenter les coordonnées de la texture pour chaque pixel
-	double		texPos; // coordonnée de départ
+	double		texpos; // coordonnée de départ
 }					t_texture;
 
 typedef struct	s_ray
 {
-	double		posX;
-	double		posY;
-	double		dirX; //vecteur de direction
-	double		dirY; //vecteur de direction
-	double		planX; //vecteur du plan
-	double		planY; //vecteur du plan
-	double		rayDirX; //calcul de direction x du rayon
-	double		rayDirY; //calcul de direction y du rayon
-	double		cameraX; //point x sur la plan camera : Gauche ecran = -1, milieu = 0, droite = 1
-	int			mapX; // coordonée x du carré dans lequel est pos
-	int			mapY; // coordonnée y du carré dans lequel est pos
-	double		sideDistX; //distance que le rayon parcours jusqu'au premier point d'intersection vertical
-	double		sideDistY; //distance que le rayon parcours jusqu'au premier point d'intersection horizontal
-	double		deltaDistX; //distance que rayon parcours entre chaque point d'intersection vertical
-	double		deltaDistY; //distance que le rayon parcours entre chaque point d'intersection horizontal
-	int			stepX; // -1 si doit sauter un carre dans direction x negative, 1 dans la direction x positive
-	int			stepY; // -1 si doit sauter un carre dans la direction y negative, 1 dans la direction y positive
+	double		posx;
+	double		posy;
+	double		dirx; //vecteur de direction
+	double		diry; //vecteur de direction
+	double		planx; //vecteur du plan
+	double		plany; //vecteur du plan
+	double		raydirx; //calcul de direction x du rayon
+	double		raydiry; //calcul de direction y du rayon
+	double		camerax; //point x sur la plan camera : Gauche ecran = -1, milieu = 0, droite = 1
+	int			mapx; // coordonée x du carré dans lequel est pos
+	int			mapy; // coordonnée y du carré dans lequel est pos
+	double		sidedistx; //distance que le rayon parcours jusqu'au premier point d'intersection vertical
+	double		sidedisty; //distance que le rayon parcours jusqu'au premier point d'intersection horizontal
+	double		deltadistx; //distance que rayon parcours entre chaque point d'intersection vertical
+	double		deltadisty; //distance que le rayon parcours entre chaque point d'intersection horizontal
+	int			stepx; // -1 si doit sauter un carre dans direction x negative, 1 dans la direction x positive
+	int			stepy; // -1 si doit sauter un carre dans la direction y negative, 1 dans la direction y positive
 	int			hit; // 1 si un mur a ete touche, 0 sinon
 	int			side; // 0 si c'est un cote x qui est touche (vertical), 1 si un cote y (horizontal)
-	double		perpWallDist; // distance du rayon
-	int			lineHeight; //hauteur de la ligne a dessiner
-	int			drawStart; //position de debut ou il faut dessiner
-	int			drawEnd; //position de fin ou il faut dessiner
+	double		perpwalldist; // distance du rayon
+	int			lineheight; //hauteur de la ligne a dessiner
+	int			drawstart; //position de debut ou il faut dessiner
+	int			drawend; //position de fin ou il faut dessiner
 	double		movespeed;
 	double		rotspeed;
 	int			x;
@@ -123,16 +123,16 @@ typedef struct		s_data
 typedef struct		s_recup
 {
 //parsing :
-	int			Rx;
-	int			Ry;
+	int			rx;
+	int			ry;
 	int			i;
-	int			F;
-	int			C;
-	char		*NO;
-	char		*SO;
-	char		*WE;
-	char		*EA;
-	char		*S;
+	int			f;
+	int			c;
+	char		*no;
+	char		*so;
+	char		*we;
+	char		*ea;
+	char		*sp;
 	int			nblines;//nb line dans toutes la map
 	int			sizeline;
 	char		**map;//prend map a deux dimensions met dans char ** , allouer dans ft_parsing_map
@@ -190,9 +190,9 @@ void		ft_initialisation2(t_recup *recup);
 void		ft_initialisation3(t_recup *recup);
 void		ft_init_texture(t_recup *recup);
 //raycasting_utils.c
-void		ft_stepsideDist(t_recup *recup);
+void		ft_stepsidedist(t_recup *recup);
 void		ft_incrementray(t_recup *recup);
-void		ft_drawStartEnd(t_recup *recup);
+void		ft_drawstartend(t_recup *recup);
 void		ft_swap(t_recup *recup);
 //raycasting_move.c
 void		ft_forward_back(t_recup *recup);

@@ -6,7 +6,7 @@
 /*   By: nsar <nsar@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 10:38:41 by nsar              #+#    #+#             */
-/*   Updated: 2022/12/05 11:17:59 by nsar             ###   ########.fr       */
+/*   Updated: 2022/12/13 16:15:21 by nsar             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,15 +99,15 @@ void	ft_texture(char *str, t_recup *recup)
 
 	i = 0;
 	if (str[i] == 'N' && str[i + 1] == 'O')
-		ft_path_texture(str, &recup->NO, recup, 2);
+		ft_path_texture(str, &recup->no, recup, 2);
 	else if (str[i] == 'S' && str[i + 1] == 'O')
-		ft_path_texture(str, &recup->SO, recup, 2);
+		ft_path_texture(str, &recup->so, recup, 2);
 	else if (str[i] == 'W' && str[i + 1] == 'E')
-		ft_path_texture(str, &recup->WE, recup, 2);
+		ft_path_texture(str, &recup->we, recup, 2);
 	else if (str[i] == 'E' && str[i + 1] == 'A')
-		ft_path_texture(str, &recup->EA, recup, 2);
+		ft_path_texture(str, &recup->ea, recup, 2);
 	else if (str[i] == 'S' && str[i + 1] != 'O')
-		ft_path_texture(str, &recup->S, recup, 1);
+		ft_path_texture(str, &recup->sp, recup, 1);
 	else if (str[0] != 'N' && str[0] != 'S' && str[0] != 'W' && str[0] != 'E'
 			&& str[0] != 'F' && str[0] != 'C'
 			&& str[0] > 65 && str[0] < 122)
@@ -122,14 +122,14 @@ void	ft_color_resolution(char **str, t_recup *recup)
 
 	i = 0;
 	recup->i = 1;
-	if (recup->sizeline > 0 && (recup->NO == NULL || recup->SO == NULL ||
-				recup->WE == NULL || recup->EA == NULL || recup->S == NULL))
+	if (recup->sizeline > 0 && (recup->no == NULL || recup->so == NULL ||
+				recup->we == NULL || recup->ea == NULL || recup->sp == NULL))
 	{
 		free(*str);
 		ft_error(recup, "Map avant elements ou elements manquants\n");
 	}
 	else if (*str[i] == 'F')
-		recup->F = ft_atoi3(*str, recup);
+		recup->f = ft_atoi3(*str, recup);
 	else if (*str[i] == 'C')
-		recup->C = ft_atoi3(*str, recup);
+		recup->c = ft_atoi3(*str, recup);
 }

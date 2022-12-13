@@ -6,89 +6,87 @@
 /*   By: nsar <nsar@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 16:50:35 by nsar              #+#    #+#             */
-/*   Updated: 2022/12/05 12:31:42 by nsar             ###   ########.fr       */
+/*   Updated: 2022/12/13 16:20:56 by nsar             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-
 #include "../inc/cub3d.h"
 
-void	ft_stepsideDist(t_recup *recup) //calcul de stepX, stepY, sideDistX et sideDistY
+void	ft_stepsidedist(t_recup *recup) //calcul de stepX, stepY, sideDistX et sideDistY
 {
-		if (recup->ray.rayDirX < 0)
-		{
-			recup->ray.stepX = -1;
-			recup->ray.sideDistX = (recup->ray.posX - recup->ray.mapX) \
-								   * recup->ray.deltaDistX;
-		}
-		else
-		{
-			recup->ray.stepX = 1;
-			recup->ray.sideDistX = (recup->ray.mapX + 1.0 - recup->ray.posX) \
-								   * recup->ray.deltaDistX;
-		}
-		if (recup->ray.rayDirY < 0)
-		{
-			recup->ray.stepY = -1;
-			recup->ray.sideDistY = (recup->ray.posY - recup->ray.mapY) \
-								   * recup->ray.deltaDistY;
-		}
-		else
-		{
-			recup->ray.stepY = 1;
-			recup->ray.sideDistY = (recup->ray.mapY + 1.0 - recup->ray.posY) \
-								   * recup->ray.deltaDistY;
-		}
-		ft_incrementray(recup);
+	if (recup->ray.raydirx < 0)
+	{
+		recup->ray.stepx = -1;
+		recup->ray.sidedistx = (recup->ray.posx - recup->ray.mapx) \
+		* recup->ray.deltadistx;
+	}
+	else
+	{
+		recup->ray.stepx = 1;
+		recup->ray.sidedistx = (recup->ray.mapx + 1.0 - recup->ray.posx) \
+		* recup->ray.deltadistx;
+	}
+	if (recup->ray.raydiry < 0)
+	{
+		recup->ray.stepy = -1;
+		recup->ray.sidedisty = (recup->ray.posy - recup->ray.mapy) \
+		* recup->ray.deltadisty;
+	}
+	else
+	{
+		recup->ray.stepy = 1;
+		recup->ray.sidedisty = (recup->ray.mapy + 1.0 - recup->ray.posy) \
+		* recup->ray.deltadisty;
+	}
+	ft_incrementray(recup);
 }
 
 void	ft_incrementray(t_recup *recup) //tant qu'on a pas touche un mur on passe au carre suivant soit dans la direction x soit direction y
 {
 	while (recup->ray.hit == 0)
 	{
-		if (recup->ray.sideDistX < recup->ray.sideDistY) // intersection avec un cote x (vertical)
+		if (recup->ray.sidedistx < recup->ray.sidedisty) // intersection avec un cote x (vertical)
 		{
-			recup->ray.sideDistX += recup->ray.deltaDistX;
-			recup->ray.mapX += recup->ray.stepX;
+			recup->ray.sidedistx += recup->ray.deltadistx;
+			recup->ray.mapx += recup->ray.stepx;
 			recup->ray.side = 0;
 		}
 		else //intersection avec un cote y (horizontal)
 		{
-			recup->ray.sideDistY += recup->ray.deltaDistY;
-			recup->ray.mapY += recup->ray.stepY;
+			recup->ray.sidedisty += recup->ray.deltadisty;
+			recup->ray.mapy += recup->ray.stepy;
 			recup->ray.side = 1;
 		}
-		if (recup->map[recup->ray.mapX][recup->ray.mapY] == '1')
+		if (recup->map[recup->ray.mapx][recup->ray.mapy] == '1')
 			recup->ray.hit = 1;
 	}
-		ft_drawStartEnd(recup);
+	ft_drawStartEnd(recup);
 }
 
-void	ft_drawStartEnd(t_recup *recup)
+void	ft_drawstartend(t_recup *recup)
 {
 	//Calculate distance projected on camera direction (Euclidean distance will give fisheye effect!)
-		if (recup->ray.side == 0)
-			recup->ray.perpWallDist = ((double)recup->ray.mapX - \
-					recup->ray.posX + (1 - (double)recup->ray.stepX) \
-					/ 2) / recup->ray.rayDirX;
-		else
-			recup->ray.perpWallDist = ((double)recup->ray.mapY - \
-					recup->ray.posY + (1 - (double)recup->ray.stepY) \
-					/ 2) / recup->ray.rayDirY;
+	if (recup->ray.side == 0)
+		recup->ray.perpwalldist = ((double)recup->ray.mapx - \
+		recup->ray.posx + (1 - (double)recup->ray.stepx) \
+		/ 2) / recup->ray.raydirx;
+	else
+		recup->ray.perpwalldist = ((double)recup->ray.mapy - \
+		recup->ray.posy + (1 - (double)recup->ray.stepy) \
+		/ 2) / recup->ray.raydiry;
 		// calcul de la hauteur de la ligne a dessiner	
-		recup->ray.lineHeight = (int)(recup->Ry / recup->ray.perpWallDist);
-		recup->ray.drawStart = - recup->ray.lineHeight / 2 + recup->Ry / 2;
-		if (recup->ray.drawStart < 0)
-			recup->ray.drawStart = 0;
-		recup->ray.drawEnd = recup->ray.lineHeight / 2 + recup->Ry / 2;
-		if (recup->ray.drawEnd >= recup->Ry || recup->ray.drawEnd < 0)
-			recup->ray.drawEnd = recup->Ry - 1;
+	recup->ray.lineheight = (int)(recup->ry / recup->ray.perpwalldist);
+	recup->ray.drawstart = -recup->ray.lineheight / 2 + recup->ry / 2;
+	if (recup->ray.drawstart < 0)
+		recup->ray.drawstart = 0;
+	recup->ray.drawend = recup->ray.lineheight / 2 + recup->ry / 2;
+	if (recup->ray.drawend >= recup->ry || recup->ray.drawend < 0)
+		recup->ray.drawend = recup->ry - 1;
 }
 
 void	ft_swap(t_recup *recup)
 {
-	void *tmp;
+	void	*tmp;
 
 	tmp = recup->data.img;
 	recup->data.img = recup->data.img2;

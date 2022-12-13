@@ -6,7 +6,7 @@
 /*   By: nsar <nsar@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 10:38:41 by nsar              #+#    #+#             */
-/*   Updated: 2022/12/05 15:35:19 by nsar             ###   ########.fr       */
+/*   Updated: 2022/12/13 16:08:25 by nsar             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,16 +33,16 @@ void	ft_error(t_recup *recup, char *str)
 	if (recup->erreur == 1)
 		exit(1);
 /////////////////free textures
-	if (recup->NO)
-		free(recup->NO);
-	if (recup->SO)
-		free(recup->SO);
-	if (recup->WE)
-		free(recup->WE);
-	if (recup->EA)
-		free(recup->EA);
-	if (recup->S)
-		free(recup->S);
+	if (recup->no)
+		free(recup->no);
+	if (recup->so)
+		free(recup->so);
+	if (recup->we)
+		free(recup->we);
+	if (recup->ea)
+		free(recup->ea);
+	if (recup->sp)
+		free(recup->sp);
 
 /////////////////free la map
 	if (recup->map)
@@ -62,8 +62,8 @@ void	ft_error(t_recup *recup, char *str)
 		free(recup->sxy);//etait en comm je sais pas pourquoi
 
 //////////////////free zbuffer
-	if (recup->s.ZBuffer)//etait en comm je sais pas pourquoi
-		free(recup->s.ZBuffer);//etait en comm je sais pas pourquoi
+	if (recup->s.zbuffer)//etait en comm je sais pas pourquoi
+		free(recup->s.zbuffer);//etait en comm je sais pas pourquoi
 
 
 /*	while (i != 0)
