@@ -6,7 +6,7 @@
 /*   By: nsar <nsar@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 16:50:35 by nsar              #+#    #+#             */
-/*   Updated: 2022/12/13 16:20:56 by nsar             ###   ########.fr       */
+/*   Updated: 2022/12/13 18:30:02 by nsar             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	ft_incrementray(t_recup *recup) //tant qu'on a pas touche un mur on passe a
 		if (recup->map[recup->ray.mapx][recup->ray.mapy] == '1')
 			recup->ray.hit = 1;
 	}
-	ft_drawStartEnd(recup);
+	ft_drawstartend(recup);
 }
 
 void	ft_drawstartend(t_recup *recup)

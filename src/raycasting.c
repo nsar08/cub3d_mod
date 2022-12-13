@@ -6,7 +6,7 @@
 /*   By: nsar <nsar@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/21 10:38:41 by nsar              #+#    #+#             */
-/*   Updated: 2022/12/13 16:15:45 by nsar             ###   ########.fr       */
+/*   Updated: 2022/12/13 18:30:28 by nsar             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ int		ft_raycasting(t_recup *recup)
 	while (recup->ray.x < recup->rx)
 	{
 		ft_initialisation3(recup);
-		ft_stepsideDist(recup);
+		ft_stepsidedist(recup);
 		ft_color_column(recup);
 		recup->s.zbuffer[recup->ray.x] = recup->ray.perpwalldist;
 		recup->ray.x++;
